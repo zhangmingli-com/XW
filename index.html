@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>081417244张明莉</title>
+    <link rel="short icon" href="Resource/icon.png">
+    <link rel="stylesheet" href="ExternalStyle.css">
+    <script type="text/javascript" src="util.js"></script>
+    <style>
+
+        .i_head_div{
+            text-align: center;
+        }
+        .i_head_div img{
+            margin-top:50px;
+        }
+        .i_inner_div{
+            border:1px solid #dddddd;
+            border-radius: 5px;
+            width:90%;
+            height:100px;
+            margin:0 auto;
+            background: white;
+            margin-top: 30px;
+        }
+        .i_inner_div div {
+            height: 50px;
+
+        }
+        .i_inner_div div span{
+            padding-left:15px;
+            font-size:20px;
+            line-height: 50px;
+        }
+        input{
+           outline: medium;background-color: transparent;border:0;
+        }
+        .i_login_div{
+            height: 50px;
+            width: 90%;
+            margin: 0 auto;
+            background: rgb(36,92,161);
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .i_login_div input{
+            line-height: 50px;
+            font-size:20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <span>登录</span>
+</header>
+
+<div class="i_head_div">
+    <img src="Resource/head.png" alt="客官，麻烦看看网络">
+</div>
+
+
+<form>
+    <div class="i_inner_div">
+        <div style="border-bottom: 1px solid  #dddddd;">
+            <span>账户名:</span>
+            <input id="i_account" type="text" value="admin">
+        </div>
+        <div>
+            <span>密码:</span>
+            <input id="i_pwd" type="password" value="admin">
+        </div>
+    </div>
+    <div class="i_login_div">
+        <!--<input type="button" value="登录" id="i_btn">-->
+        <!--<input type="button" value="登录" onclick="sum1(4,5)">-->
+        <input type="button" value="登录" id="i_btn">
+    </div>
+
+    <script>
+        // // 普通定义函数
+        // function sum( a,b){
+        //     var c=a+b;
+        //     alert("函数用到了");
+        //     return;
+        // }
+        // // 变量名定义函数
+        // var sum1=function(a,b){
+        //     var c=a+b;
+        //     alert("函数来了");
+        //     return c;
+        // }
+
+        var btn=document.getElementById("i_btn")
+       btn.onclick=function(){
+         var userName=encodeURIComponent(document.getElementById("i_account").value)
+           var pwd=encodeURIComponent(document.getElementById("i_pwd").value)
+
+           // 第三步：向服务器发送请求（传参）
+           var par ="username="+ userName + "&pwd="+ pwd;
+            // var str=requestMethod('post','login',par);
+           requestMethod('post','login',par,function(str){
+               if(str=="登录成功"){
+                   location.href="DropletService.html";
+               }else{
+                   alert(str);
+               }
+           });
+       }
+    </script>
+</form>
+</body>
+</html>
